@@ -7,6 +7,7 @@
 
 #include <array>
 #include <vector>
+#include <random>
 
 class SudokuSolver {
 public:
@@ -16,11 +17,13 @@ public:
 private:
     void zero();
     void generateBoard();
+    bool fillBoard(std::mt19937 );
     std::array<int,2> searchSmallestCandidate();
     std::vector<int> RemoveFromVector(int n, std::vector<int> vector);
     std::vector<int> GetCandidates(int x, int y);
 private:
     std::array<std::array<int, 9>, 9> sudokuBoard;
+    std::vector<int> candidates;
 
 };
 
