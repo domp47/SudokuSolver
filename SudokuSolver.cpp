@@ -106,7 +106,7 @@ void SudokuSolver::generateBoard() {
             sudokuBoard.at(y).at(x) = randomNine[x+(y*3)];
         }
     }
-    
+
     bool successfulFill = fillBoard(gen);
 
 }
