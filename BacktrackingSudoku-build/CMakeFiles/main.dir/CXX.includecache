@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/dom/Projects/BacktrackingSudoku/BacktrackingSudoku/SudokuSolver.cpp
+SudokuSolver.h
+/home/dom/Projects/BacktrackingSudoku/BacktrackingSudoku/SudokuSolver.h
+iostream
+-
+random
+-
+climits
+-
+
+/home/dom/Projects/BacktrackingSudoku/BacktrackingSudoku/SudokuSolver.h
+array
+-
+vector
+-
+random
+-
+
+/home/dom/Projects/BacktrackingSudoku/BacktrackingSudoku/main.cpp
+iostream
+-
+chrono
+-
+SudokuSolver.h
+/home/dom/Projects/BacktrackingSudoku/BacktrackingSudoku/SudokuSolver.h
+
