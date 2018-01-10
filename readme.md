@@ -1,3 +1,9 @@
-## Sudoku Puzzle generator and solver
+## Sudoku Puzzle Generator and Solver
 
-https://dlbeer.co.nz/articles/sudoku.html
+A Sudoku puzzle generator and solver using backtracking.
+
+## Outcome
+
+The program prints the puzzle it generated and the solution for it.
+
+![alt-tag](imgs/output.png)
