@@ -3,29 +3,42 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args){
 
-        String file;
-
-        System.out.print("Enter full path for file: ");
-
         Scanner reader = new Scanner(System.in);  // Reading from System.in
-        String inputFile = reader.next();
-        reader.close();
+        boolean continueRunning = true;
 
-        System.out.println("Using file: "+inputFile);
+        //loop while user wants to run program
+        while (continueRunning){
+            System.out.print("Enter path for file: ");
 
-        file = "/home/dom/Projects/BacktrackingSudoku/BacktrackingSudoku-Java/board.txt";
-        int[][] board = Helper.ReadBoardFromFile(file);
+            String inputFile = reader.next();
 
-        System.out.println("Puzzle To Solve");
-        Helper.printBoard(board);
+            System.out.println("Using file: " + inputFile);
 
-        Solver solver = new Solver(board);
-        if(solver.SolvePuzzle()){
-            System.out.println("Puzzle Solved");
-            Helper.printBoard(solver.getBoard());
-        }else{
-            System.out.println("Puzzle Not Solvable");
+            //load board from file using helper class
+            int[][] board = Helper.ReadBoardFromFile(inputFile);
+
+            //create new board object from file data
+            SudokuBoard sudokuBoard = new SudokuBoard(board);
+
+            //check if the board is valid, if not ask again for file
+            if (!sudokuBoard.isBoardvalid()) {
+                System.out.println("Error: Board is an invalid Puzzle.");
+                continue;
+            }
+
+            //IF puzzle was solved print solved board. ELSE print message saying unsolvable
+            if (sudokuBoard.SolvePuzzle()) {
+                System.out.println("Puzzle Solved");
+                Helper.printBoard(sudokuBoard.getBoard());
+            } else {
+                System.out.println("Puzzle Not Solvable");
+            }
+            System.out.print("Press \"Y\" to Continue: ");
+
+            //get user response for continuing and convert to boolean
+            continueRunning = reader.next().toUpperCase().equals("Y");
         }
 
+        reader.close();
     }
 }
