@@ -11,43 +11,34 @@ class Helper {
      * @param filePath file path that contains the board data
      * @return int array corresponding to sudoku board
      */
-   static int[][] ReadBoardFromFile(String filePath){
+   static int[][] ReadBoardFromFile(String filePath)throws IOException{
        int[][] board = new int[9][9];
        int rowCounter = 0;
 
        String line;
-       try {
-           // FileReader reads text files in the default encoding.
-           FileReader fileReader = new FileReader(filePath);
+       // FileReader reads text files in the default encoding.
+       FileReader fileReader = new FileReader(filePath);
 
-           // Always wrap FileReader in BufferedReader.
-           BufferedReader bufferedReader = new BufferedReader(fileReader);
+       // Always wrap FileReader in BufferedReader.
+       BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-           //read file line by line inserting each line into first dimension of board.
-           while((line = bufferedReader.readLine()) != null) {
+       //read file line by line inserting each line into first dimension of board.
+       while((line = bufferedReader.readLine()) != null) {
 
-               //split the line by delimited spaces
-               String[] split = line.split("\\s+");
+           //split the line by delimited spaces
+           String[] split = line.split("\\s+");
 
-               //for each item that's delimited insert it into array
-               for(int i = 0; i < split.length; i++){
-                   if(i < board[rowCounter].length&&rowCounter<board.length){
-                       board[rowCounter][i] = Integer.parseInt(split[i]);
-                   }
+           //for each item that's delimited insert it into array
+           for(int i = 0; i < split.length; i++){
+               if(i < board[rowCounter].length&&rowCounter<board.length){
+                   board[rowCounter][i] = Integer.parseInt(split[i]);
                }
-               rowCounter++;
            }
+           rowCounter++;
+       }
 
-           // Always close files.
-           bufferedReader.close();
-       }
-       catch(FileNotFoundException ex) {
-           System.out.println("Unable to open file '" + filePath + "'");
-       }
-       catch(IOException ex) {
-           System.out.println("Error reading file '" + filePath + "'");
-            ex.printStackTrace();
-       }
+       // Always close files.
+       bufferedReader.close();
 
        return board;
    }

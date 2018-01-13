@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -14,8 +15,14 @@ public class Main {
 
             System.out.println("Using file: " + inputFile);
 
-            //load board from file using helper class
-            int[][] board = Helper.ReadBoardFromFile(inputFile);
+            int[][] board;
+            try {
+                //load board from file using helper class
+                board = Helper.ReadBoardFromFile(inputFile);
+            }catch (IOException e){
+                System.out.println("Error Generating Board From File");
+                continue;
+            }
 
             //create new board object from file data
             SudokuBoard sudokuBoard = new SudokuBoard(board);
